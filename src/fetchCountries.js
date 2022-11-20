@@ -8,7 +8,7 @@ export function fetchCountries(name) {
       return response.json();
     })
     .catch(error => {
-      console.error(error);
+      console.error('error => ', error);
       return Notiflix.Notify.failure('Error! Please enter correct data.');
     });
 }

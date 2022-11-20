@@ -15,15 +15,17 @@ function onInputValue(event) {
   if (!valueInput) {
     return (list.innerHTML = '');
   }
-  fetchCountries(valueInput).then(data => {
-    if (data.length > 10) {
-      return Notiflix.Notify.info(
-        'Too many matches found. Please enter a more specific name.'
-      );
-    } else if (1 > data.length < 10) {
-      return createMarkup(data);
-    }
-  });
+  fetchCountries(valueInput)
+    .then(data => {
+      if (data.length > 10) {
+        return Notiflix.Notify.info(
+          'Too many matches found. Please enter a more specific name.'
+        );
+      } else if (1 > data.length < 10) {
+        return createMarkup(data);
+      }
+    })
+    .catch(error => console.log('error => ', error));
 }
 
 function createMarkup(arr) {
